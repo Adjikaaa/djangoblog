@@ -5,5 +5,6 @@ urlpatterns = [
   path("", views.index, name='index'),
   path("about/", views.about, name ='about'),
   path("contact/", views.contact, name ='contact'),
-  path("service/", views.service, name ='service'),
+  path("postspage/", views.postspage, name ='postspage'),
+#  path('post/<int:pk>/', views.post_detail, name='post_detail', name='post_detail')
 ]
