@@ -1,19 +1,18 @@
 {% extends 'main/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
 
+{% block content %}
 <div class="body_bg layout_padding">
-    <section class="service_section ">
-        {% block content %}
-            {% if post.published_date %}
-                <div>
-                    {{ post.published_date }}
-                </div>
-            {% endif %}
-            <h4>{{ post.title }}</h4>
-            <p>{{ post.text|linebreaksbr }}</p>
-
-        {% endblock %}
+    <section class="service_section ">  
+        {% if post.published_date %}
+            <div>
+                <p> {{ post.published_date }} </p>
+            </div>
+        {% endif %}
+        <div>
+        <h4>{{ post.title }}</h4>
+            <p>{{ post.text|linebreaksbr }}</p> 
+        </div>
+    </section>      
 </div>
-</html>
+{% endblock %}
