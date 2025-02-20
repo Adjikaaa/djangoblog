@@ -1,12 +1,9 @@
-import os
 from pathlib import Path
-from dotenv import load_dotenv
 
-load_dotenv()
-BOT_TOKEN = os.getenv('BOT_TOKEN') 
-CHAT_ID = os.getenv('CHAT_ID')
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+
+BOT_TOKEN = '7777528511:AAHXKBZ80B0GXfwFAaH0H_L4sKV_8j-PuHs'
+SECRET_KEY = 'django-insecure-y0&^2+9+n5d7o&dmwr9u#*54pe3dz4=52osp!8_o8bps(quh0='
+CHAT_ID = '@fregg007'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
