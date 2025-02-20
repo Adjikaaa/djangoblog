@@ -5,8 +5,8 @@ from django.conf import settings
 from .telegram_utils import send_telegram_message
 from .models import Post
 
-# admin.site.register(Post)
 admin.site.register(Post)
+#@admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     change_form_template = "post_change_form.html"
     list_display = ('title', 'created_at', 'is_published')
