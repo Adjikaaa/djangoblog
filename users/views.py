@@ -10,7 +10,7 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Ваш аккаунт создан: можно войти на сайт.')
+            messages.success(request, f'Ваш аккаунт, {username}, создан: можно войти на сайт.')
             return redirect('login')
     else:
         form = UserRegisterForm()
@@ -21,6 +21,6 @@ def register(request):
 def profile(request):
     return render(request, 'users/profile.html')
 
-@login_required
+
 def logout(request):
     return render(request, 'users/logout.html')

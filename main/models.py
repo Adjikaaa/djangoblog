@@ -1,8 +1,7 @@
-from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-from django.template.loader import render_to_string
+
 
 
 class Post(models.Model):
