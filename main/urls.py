@@ -7,4 +7,5 @@ urlpatterns = [
   path("contact/", views.contact, name ='contact'),
   path("postspage/", views.postspage, name ='postspage'),
   path('postspage/post/<int:pk>/', views.post_detail, name='post_detail'),
+  path('create_post/', views.create_post, name='create_post'),
 ]

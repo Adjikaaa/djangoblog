@@ -6,6 +6,7 @@ import requests
 class Post(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок")
     content = models.TextField(default='', verbose_name="Содержание")
+    image = models.ImageField(upload_to='blog_images/', blank=True, null=True) 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     published_date = models.DateTimeField(null=True, blank=True, verbose_name="Дата публикации")
     is_published = models.BooleanField(default=False, verbose_name="Опубликовано")
