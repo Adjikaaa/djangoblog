@@ -1,34 +1,19 @@
-from django.template.loader import render_to_string
-from django.conf import settings
-import urllib.request
-import json
+import requests
 
+TELEGRAM_BOT_TOKEN = '7777528511:AAHXKBZ80B0GXfwFAaH0H_L4sKV_8j-PuHs'
+TELEGRAM_CHANNEL_ID = '@fregg007'
 
-
-def get_html_message_from_template(post) -> str:
-    return render_to_string('post_telegram_message.html', {
-        'post': post
-    })
-
-def send_telegram_message(chat_id: str, post):
-    api_url = f'https://api.telegram.org/bot{settings.BOT_TOKEN}/sendMessage'
-
-    input_data = json.dumps(
-        {
-            'chat_id': chat_id,
-            'text': get_html_message_from_template(post=post),
-            'parse_mode': "HTML"
-        }
-    ).encode()
-
+def send_telegram_message(post):
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    text = f"📝 *{post.title}*\n\n{post.content}"  
+    params = {
+        'chat_id': TELEGRAM_CHANNEL_ID,
+        'text': text,
+        'parse_mode': 'Markdown',
+    }
     try:
-        req = urllib.request.Request(
-            url=api_url,
-            data=input_data,
-            headers={'Content-Type': 'application/json'}
-        )
-        with urllib.request.urlopen(req) as response:
-            print(response.read().decode('utf-8'))
-
+        response = requests.post(url, data=params)
+        if response.status_code != 200:
+            print(f"Ошибка отправки в Telegram: {response.json()}")
     except Exception as e:
-        print(e)
+        print(f"Произошла ошибка при отправке в Telegram: {e}")

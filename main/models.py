@@ -1,19 +1,25 @@
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
-
-
+from django.db.models.signals import post_save
+import requests
 
 class Post(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
+    title = models.CharField(max_length=255, verbose_name="Заголовок")
+    content = models.TextField(default='', verbose_name="Содержание")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    published_date = models.DateTimeField(null=True, blank=True, verbose_name="Дата публикации")
+    is_published = models.BooleanField(default=False, verbose_name="Опубликовано")
 
     def publish(self):
-        self.published_date = timezone.now()
-        self.save()
-   
+        if not self.is_published:
+            self.published_date = timezone.now()
+            self.is_published = True
+            self.save()
+
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = "Пост"
+        verbose_name_plural = "Посты"
+        ordering = ['-published_date']
