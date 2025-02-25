@@ -5,32 +5,29 @@ from .forms import PostForm
 
 
 def index(request):
-	return render(request, "main/index.html")
+		return render(request, "main/index.html")
 
 def about(request):
-	return render(request, "main/about.html")
+		return render(request, "main/about.html")
 
 def contact(request):
-	return render(request, "main/contact.html")
+		return render(request, "main/contact.html")
 
 def postspage(request):
-	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	return render(request, "main/postspage.html", {'posts': posts})
+		posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+		return render(request, "main/postspage.html", {'posts': posts})
 
 def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    return render(request, 'main/post_detail.html', {'post': post})
+		post = get_object_or_404(Post, pk=pk)
+		return render(request, 'main/post_detail.html', {'post': post})
 
 def create_post(request):
-    if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)  # Обратите внимание на request.FILES
-        if form.is_valid():
-            form.save()
-            return redirect('postpage')  # Перенаправление после успешного создания
-    else:
-        form = PostForm()
-    return render(request, 'main/create_post.html', {'form': form})
+		if request.method == 'POST':
+			form = PostForm(request.POST, request.FILES)  # Обратите внимание на request.FILES
+			if form.is_valid():
+				form.save()
+				return redirect('main/postpage')  # Перенаправление после успешного создания
+		else:
+			form = PostForm()
+		return render(request, 'main/create_post.html', {'form': form})
 
-def post_list(request):
-    posts = Post.objects.all()
-    return render(request, 'postpage.html', {'posts': posts})
