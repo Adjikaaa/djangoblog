@@ -12,8 +12,6 @@ CHAT_ID = os.getenv("CHAT_ID")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#SECRET_KEY = 'django-insecure-y0&^2+9+n5d7o&dmwr9u#*54pe3dz4=52osp!8_o8bps(quh0='
-
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
