@@ -1,7 +1,8 @@
 import requests
+from django.conf import settings
 
-TELEGRAM_BOT_TOKEN = '7777528511:AAHXKBZ80B0GXfwFAaH0H_L4sKV_8j-PuHs'
-TELEGRAM_CHANNEL_ID = '@fregg007'
+TELEGRAM_BOT_TOKEN = settings.BOT_TOKEN
+TELEGRAM_CHANNEL_ID = settings.CHAT_ID
 
 def send_telegram_message(post):
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"

@@ -1,5 +1,4 @@
 {% load static %}
-{% load common_tags %}
 {% if messages %}
         	{% for message in messages %}
           	<div class="alert alert- {{ message.tags }}">
@@ -48,6 +47,7 @@
     <!-- header section strats -->
     <header class="header_section">
       <div class="container">
+
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
           <a class="navbar-brand mr-5" href="{% url 'index' %}">
             <img src="{% static 'main/images/logo.png' %}">
