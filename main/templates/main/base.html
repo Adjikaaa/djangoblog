@@ -1,4 +1,5 @@
 {% load static %}
+{% load common_tags %}
 {% if messages %}
         	{% for message in messages %}
           	<div class="alert alert- {{ message.tags }}">
@@ -62,37 +63,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav ">
-                <li class="nav-item ">
-                  <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="{% url 'about' %}"> About </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'postspage' %}"> Posts </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'contact' %}">Contact us</a>
-                </li>
-                {% if user.is_authenticated %}
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'profile' %}">Profile {{ user.get_username }}</a>
-                  </li>
-                  <li class="nav-item">
-                    <form id="logout-form" action="{% url 'logout' %}" method="post">
-                      <a class = "nav-link" onclick="document.getElementById('logout-form').submit(); return false;">Sign out</a>
-                      {% csrf_token %}
-                    </form>               
-                  </li>
-                {% else %}
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Log in</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Registration</a>
-                  </li>
-                {% endif %}
-                </li>
+                  {% show_menu %}
               </ul>
               <form class="form-inline">
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
@@ -137,12 +108,11 @@
   <!-- footer section -->
   <section class="container-fluid footer_section">
     <p>
-      Copyright &copy; 2025 All Rights Reserved By
-      <a href="https://html.design/">Aziza Jagodnaja</a>
+      Copyright &copy; 2025 All Rights Reserved By Aziza Jagodnaja
     </p>
   </section>
   <!-- footer section -->
-  <script type="text/javascript" src="{% static 'main/js/jquery-3.4.1.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'main/js/bootstrap.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

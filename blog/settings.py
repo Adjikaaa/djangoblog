@@ -27,8 +27,8 @@ INSTALLED_APPS = [
 	'users.apps.UsersConfig',
 	'crispy_forms',
     'crispy_bootstrap5',
-
-
+    'mptt',
+    'treemenu',
 ]
 
 MIDDLEWARE = [
@@ -106,5 +106,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'logout'
 LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
+LOGOUT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

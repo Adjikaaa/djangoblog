@@ -1,0 +1,24 @@
+<ul class="navbar-nav">
+  {% for menu_item in menu_items %}
+    {% if menu_item.guest_only and not user.is_authenticated or not menu_item.guest_only %}
+      {% if menu_item.get_children %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ menu_item.id }}" data-toggle="dropdown">
+            {{ menu_item.name }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown{{ menu_item.id }}">
+            {% for child in menu_item.get_children %}
+              {% if child.guest_only and not user.is_authenticated or not child.guest_only %}
+                <a class="dropdown-item" href="{{ child.url }}">{{ child.name }}</a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ menu_item.url }}">{{ menu_item.name }}</a>
+        </li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</ul>

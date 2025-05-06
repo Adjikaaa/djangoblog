@@ -609,6 +609,36 @@ a:focus {
 .footer_section a {
   color: #ffffff;
 }
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1000;
+}
 
+.dropdown-toggle::after {
+  content: "▼";
+  margin-left: 5px;
+  font-size: 0.8em;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  color: #f9fafb;
+  background-color: #040404;
+}
 /* end footer section*/
 /*# sourceMappingURL=style.css.map */
