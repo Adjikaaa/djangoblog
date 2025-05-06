@@ -14,7 +14,7 @@
                   {% if child.url == '/logout/' %}
                     <form method="post" action="{{ child.url }}" class="dropdown-item" style="display: inline;">
                       {% csrf_token %}
-                      <button type="submit" class="btn btn-link p-0 m-0 align-top">{{ menu_item.name }}</button>
+                      <button type="submit" class="btn btn-link p-0 m-0 align-top">{{ child.name }}</button>
                     </form>
                   {% else %}
                     <a class="dropdown-item" href="{{ child.url }}">{{ child.name }}</a>
