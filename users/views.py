@@ -21,5 +21,5 @@ def register(request):
 def profile(request):
     return render(request, 'users/profile.html')
 
-def logout(request):
-    return render(request, 'users/logout.html')
+#def logout(request):
+#    return render(request, 'users/logout.html')
